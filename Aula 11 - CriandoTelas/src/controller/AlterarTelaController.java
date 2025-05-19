@@ -1,33 +1,37 @@
 package controller;
-import java.awt.event.ActionEvent;
+
+
+import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
-
+import javafx.stage.Stage;
 
 public class AlterarTelaController {
 
-	public static  void mudarTela(ActionEvent Event,String TelaFXML , String Titulo){
+	public static void mudarTela(ActionEvent event, String TelaFXML, String titulo) throws IOException {
+
+		// Informa o caminho do arquivo FXML
+		FXMLLoader loader = new FXMLLoader(AlterarTelaController.class.getResource(TelaFXML));
+		// Carregar o arquivo FXML
+		Parent root = loader.load();
+
+		// Identificar a mudança de janela
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
-		//Informe o caminho do arquivo FXML
-		FXMLLoader loader =new FXMLLoader(AlterarTelaController.class.getResource(TelaFXML));
-		//Carregar o arquivo FXML
-		Parent root=loader.load();
-		
-		//Identificar mudança
-		Stage stage =(Stage)((javafx.scene.Node)Event.getSource()).getScene().getWindow();
 		
 		//Definir uma nova cena para a tela
 		Scene scene = new Scene(root);
-
-		//Definir um título para a jenela
-		stage.setTitle = (Titulo);
-				
+		
+		//Definir um titulo para a janela
+		stage.setTitle(titulo);
+		
 		//Atualizo a nova cena
 		stage.setScene(scene);
 		stage.show();
 		
 	}
-	
+
 }

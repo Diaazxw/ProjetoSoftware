@@ -2,7 +2,7 @@ module CriandoTelas {
 	requires javafx.controls;
 	requires javafx.fxml;
 	requires java.desktop;
-	requires javafx.graphics;
+	requires java.sql;
 	
 	exports controller;
 	opens controller to javafx.fxml;
